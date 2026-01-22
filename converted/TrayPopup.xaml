@@ -1,0 +1,115 @@
+<Window x:Class="SmartKeyboard.TrayPopup"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        
+        Title="Smart Keyboard"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Background="Transparent"
+        Topmost="True"
+        ResizeMode="NoResize"
+        ShowInTaskbar="False"
+        ShowActivated="False"
+        Width="200"
+        SizeToContent="Height"
+        
+        Deactivated="Window_Deactivated">
+    
+    
+    <Border x:Name="Container"
+            CornerRadius="12"
+            BorderThickness="1"
+            Margin="5">
+        
+        
+        <Border.BorderBrush>
+            <SolidColorBrush Color="#647096DC" Opacity="0.3"/>
+        </Border.BorderBrush>
+        
+        
+        <Border.Background>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                <GradientStop Color="#FA232837" Offset="0"/>
+                <GradientStop Color="#FF191E2D" Offset="1"/>
+            </LinearGradientBrush>
+        </Border.Background>
+        
+        <StackPanel Margin="10">
+            
+            
+            <TextBlock x:Name="TitleText"
+                       Text="Smart Keyboard v1.9"
+                       FontFamily="Segoe UI"
+                       FontSize="18"
+                       FontWeight="Normal"
+                       Foreground="#fcb953"
+                       HorizontalAlignment="Center"
+                       Padding="5"/>
+            
+            
+            <Rectangle Height="1" Margin="0,5,0,5">
+                <Rectangle.Fill>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                        <GradientStop Color="Transparent" Offset="0"/>
+                        <GradientStop Color="#666496DC" Offset="0.5"/>
+                        <GradientStop Color="Transparent" Offset="1"/>
+                    </LinearGradientBrush>
+                </Rectangle.Fill>
+            </Rectangle>
+            
+            
+            <Border x:Name="BtnShow" 
+                    Background="Transparent" 
+                    CornerRadius="8" 
+                    Cursor="Hand"
+                    Padding="10,8,10,8"
+                    Margin="0,2,0,2"
+                    MouseEnter="BtnShow_MouseEnter"
+                    MouseLeave="BtnShow_MouseLeave"
+                    MouseLeftButtonUp="BtnShow_Click">
+                <Grid>
+                    <TextBlock x:Name="ShowEng" 
+                               Text="Run" 
+                               FontFamily="Segoe UI" 
+                               FontSize="18" 
+                               Foreground="#C8B4B4B4"
+                               HorizontalAlignment="Left"/>
+                    <TextBlock x:Name="ShowAr" 
+                               Text="insert تشغيل" 
+                               FontFamily="Segoe UI" 
+                               FontSize="18" 
+                               FontWeight="Normal"
+                               Foreground="#e6a84a"
+                               HorizontalAlignment="Right"/>
+                </Grid>
+            </Border>
+            
+            
+            <Border x:Name="BtnExit" 
+                    Background="Transparent" 
+                    CornerRadius="8" 
+                    Cursor="Hand"
+                    Padding="10,8,10,8"
+                    Margin="0,2,0,2"
+                    MouseEnter="BtnExit_MouseEnter"
+                    MouseLeave="BtnExit_MouseLeave"
+                    MouseLeftButtonUp="BtnExit_Click">
+                <Grid>
+                    <TextBlock x:Name="ExitEng" 
+                               Text="Exit" 
+                               FontFamily="Segoe UI" 
+                               FontSize="18" 
+                               Foreground="#C8B4B4B4"
+                               HorizontalAlignment="Left"/>
+                    <TextBlock x:Name="ExitAr" 
+                               Text="خروج" 
+                               FontFamily="Segoe UI" 
+                               FontSize="18" 
+                               FontWeight="Normal"
+                               Foreground="#e6a84a"
+                               HorizontalAlignment="Right"/>
+                </Grid>
+            </Border>
+        </StackPanel>
+    </Border>
+</Window>

@@ -1,0 +1,86 @@
+﻿<Window x:Class="SmartKeyboard.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="Smart Keyboard"
+        
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Background="Transparent"
+        Topmost="True"
+        ResizeMode="NoResize"
+        ShowInTaskbar="False"
+        ShowActivated="False">
+    
+    
+    <Grid x:Name="MainGrid">
+        
+        <TextBox x:Name="TextEdit"
+                 AcceptsReturn="True"
+                 AcceptsTab="False"
+                 TextWrapping="Wrap"
+                 BorderThickness="0"
+                 CaretBrush="White"
+                 Padding="8,4,8,4"
+                 VerticalScrollBarVisibility="Auto"
+                 HorizontalScrollBarVisibility="Disabled"
+                 
+                 Background="#C8000000"
+                 Foreground="#FFFFFF00"
+                 FontSize="20"
+                 FontFamily="Segoe UI"
+                 FlowDirection="RightToLeft"
+                 
+                 PreviewTextInput="TextEdit_TextInput"
+                 PreviewKeyDown="TextEdit_KeyDown">
+            
+            
+            <TextBox.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="تراجع / Undo" InputGestureText="Ctrl+Z" Click="ContextMenu_Undo"/>
+                    <MenuItem Header="إعادة / Redo" InputGestureText="Ctrl+Y" Click="ContextMenu_Redo"/>
+                    <Separator/>
+                    <MenuItem Header="قص / Cut" InputGestureText="Ctrl+X" Click="ContextMenu_Cut"/>
+                    <MenuItem Header="نسخ / Copy" InputGestureText="Ctrl+C" Click="ContextMenu_Copy"/>
+                    <MenuItem Header="لصق / Paste" InputGestureText="Ctrl+V" Click="ContextMenu_Paste"/>
+                    <Separator/>
+                    <MenuItem Header="تحديد الكل / Select All" InputGestureText="Ctrl+A" Click="ContextMenu_SelectAll"/>
+                </ContextMenu>
+            </TextBox.ContextMenu>
+            
+            <!-- Scrollbar styling - مطابق لـ main.py lines 1104-1122 -->
+            <TextBox.Resources>
+                <Style TargetType="ScrollBar">
+                    <!-- QScrollBar:vertical { border: none; background: transparent; width: 4px; margin: 0px; } -->
+                    <Setter Property="Width" Value="4"/>
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Setter Property="Margin" Value="0"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="ScrollBar">
+                                <Grid Background="Transparent">
+                                    <Track x:Name="PART_Track" IsDirectionReversed="True">
+                                        <Track.Thumb>
+                                            <!-- QScrollBar::handle:vertical { background: rgba(255, 255, 255, 0.3); min-height: 20px; border-radius: 2px; } -->
+                                            <Thumb>
+                                                <Thumb.Template>
+                                                    <ControlTemplate TargetType="Thumb">
+                                                        <Border Background="#4DFFFFFF" 
+                                                                CornerRadius="2" 
+                                                                MinHeight="20"/>
+                                                    </ControlTemplate>
+                                                </Thumb.Template>
+                                            </Thumb>
+                                        </Track.Thumb>
+                                    </Track>
+                                </Grid>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </TextBox.Resources>
+        </TextBox>
+    </Grid>
+</Window>
